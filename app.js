@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+var cors = require('cors')
 
 
 const MONGODB_URL = 'mongodb+srv://rameshwar:1qaz!QAZ@cluster0-s8t6v.mongodb.net/my-chat-app?retryWrites=true&w=majority'
@@ -15,7 +16,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     console.log("mongoDB connected");
 });
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));

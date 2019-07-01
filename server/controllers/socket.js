@@ -7,10 +7,9 @@ module.exports = function (io) {
 
   io.on('connection', function(socket) {
       console.log('User Connected', socket.id);
-
       socket.on('message', function(data) {
         console.log(data);
-        IOHelper.sendToAllClientsInRoom(io, ROOM_NAME, 'send message', data);
+        IOHelper.sendToAllClientsInRoomExcept(socket, ROOM_NAME, 'message', data);
       });
 
       socket.on('disconnect', function() {

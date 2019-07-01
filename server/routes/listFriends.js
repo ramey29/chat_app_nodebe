@@ -30,7 +30,6 @@ router.put('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  console.log('hello how are yi')
   FriendController.find().then((data) => {
       res.status(200);
       console.log(data);
