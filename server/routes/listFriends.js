@@ -32,7 +32,6 @@ router.put('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
   FriendController.find().then((data) => {
       res.status(200);
-      console.log(data);
       res.json(data);
     }).catch((err) => {
       next(err);
